@@ -11,11 +11,10 @@
 
 ## B. 仓库与域名
 
-- [ ] 准备两个仓库（推荐）：
+- [x] 准备两个仓库（推荐）：
   - 前端：`hanzi-adventure-web`
   - 后端：`hanzi-adventure-api`
-- [ ] 若使用自定义域名，先确认 DNS 可配置。
-- [ ] 在前端仓库开启 GitHub Pages。
+- [x] 在前端仓库开启 GitHub Pages。
 
 ## C. GitHub OAuth App（必须）
 
