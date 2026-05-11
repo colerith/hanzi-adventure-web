@@ -58,6 +58,20 @@ export const grammarQuestions: QuizQuestion[] = [
   { question: '你 [ ] 谁啊？', options: ['找', '是', '看'], answer: '找' },
   { question: '我 [ ] 朋友一起去商店。', options: ['和', '也', '都'], answer: '和' },
   { question: '我们班 [ ] 二十多个学生。', options: ['有', '是', '在'], answer: '有' },
+  { question: '晚上我不 [ ] 看电视。', options: ['常', '总', '也'], answer: '常' },
+  { question: '明天你 [ ] 我一起去，怎么样？', options: ['跟', '和', '在'], answer: '跟' },
+  { question: '晚上我做练习 [ ] 看电视。', options: ['或者', '还是', '和'], answer: '或者' },
+  { question: '今天晚上你复习课文 [ ] 预习生词？', options: ['还是', '或者', '和'], answer: '还是' },
+  { question: '我 [ ] 在宿舍做练习。', options: ['总', '但是', '也'], answer: '总' },
+  { question: '星期天，[ ] 我在宿舍休息，[  ]跟朋友一起去公园玩儿。', options: ['有时候', '总是', '常常'], answer: '有时候' },
+  { question: '我总上网跟朋友 [ ]。', options: ['聊天儿', '练习', '参观'], answer: '聊天儿' },
+  { question: '林老师 [ ] 我们听力和阅读。', options: ['教', '学', '做'], answer: '教' },
+  { question: '我去邮局 [ ] 信。', options: ['寄', '发', '收'], answer: '寄' },
+  { question: '你 [ ] 帮我买苹果，好吗？', options: ['顺便', '还是', '或者'], answer: '顺便' },
+  { question: '我 [ ] 手机上网聊天儿。', options: ['用', '在', '给'], answer: '用' },
+  { question: '我给代表团 [ ] 翻译。', options: ['当', '做', '看'], answer: '当' },
+  { question: '他们 [ ] 飞机去北京旅行。', options: ['坐', '骑', '开'], answer: '坐' },
+  { question: '我们一起去上海 [ ]。', options: ['参观', '旅行', '学习'], answer: '参观' },
 ]
 
 export const dialogueQuestions: QuizQuestion[] = [
@@ -285,6 +299,46 @@ export const dialogueQuestions: QuizQuestion[] = [
     question: 'A: 这位小姐是你的朋友吗？',
     options: ['B: 是的，她是我的一位朋友。', 'B: 是的，她是我的一张朋友。', 'B: 是的，她是我的一件朋友。'],
     answer: 'B: 是的，她是我的一位朋友。',
+  },
+  {
+    question: 'A: 晚上你常看电视吗？',
+    options: ['B: 晚上我不常看电视。', 'B: 晚上我总看电视。', 'B: 晚上我去电视。'],
+    answer: 'B: 晚上我不常看电视。',
+  },
+  {
+    question: 'A: 你在哪儿做练习？',
+    options: ['B: 我总在宿舍做练习。', 'B: 我去图书馆。', 'B: 我去商场买东西'],
+    answer: 'B: 我总在宿舍做练习。',
+  },
+  {
+    question: 'A: 林老师教你们什么？',
+    options: ['B: 林老师教我们听力和阅读。', 'B: 林老师给我们听力和阅读。', 'B: 林老师学我们听力和阅读。'],
+    answer: 'B: 林老师教我们听力和阅读。',
+  },
+  {
+    question: 'A: 你去邮局做什么？',
+    options: ['B: 我去邮局寄信。', 'B: 我去邮局收发。', 'B: 我去邮局看信。'],
+    answer: 'B: 我去邮局寄信。',
+  },
+  {
+    question: 'A: 你能帮我买苹果吗？',
+    options: ['B: 没问题。', 'B: 不知道。', 'B: 没关系'],
+    answer: 'B: 没问题。',
+  },
+  {
+    question: 'A: 你在代表团里做什么？',
+    options: ['B: 我给代表团当翻译。', 'B: 我给代表团做飞机。', 'B: 我给代表团教旅行。'],
+    answer: 'B: 我给代表团当翻译。',
+  },
+  {
+    question: 'A: 他们怎么去北京旅行？',
+    options: ['B: 他们坐飞机去北京旅行。', 'B: 他们骑飞机去北京旅行。', 'B: 他们开飞机去北京旅行吗。'],
+    answer: 'B: 他们坐飞机去北京旅行。',
+  },
+  {
+    question: 'A: 你们去上海做什么？',
+    options: ['B: 我们一起去上海参观。', 'B: 我们一起去上海聊天儿。', 'B: 我们一起去上海顺便。'],
+    answer: 'B: 我们一起去上海参观。',
   },
 ]
 

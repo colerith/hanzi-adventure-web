@@ -60,7 +60,7 @@ const locked = ref(false)
 const selectedOption = ref('')
 const displayOptions = ref<string[]>([])
 const elapsedSeconds = ref(0)
-const FEEDBACK_DELAY_MS = 1600
+const FEEDBACK_DELAY_MS = 2000
 let timerId: ReturnType<typeof setInterval> | null = null
 
 const current = computed(() => list[index.value]!)
