@@ -12,6 +12,7 @@
         v-for="(opt, optIndex) in displayOptions"
         :key="`${index}-${optIndex}-${opt}`"
         class="option-btn"
+        :class="optionStateClass(opt)"
         @click="pick(opt)"
         :disabled="locked"
       >
@@ -19,7 +20,15 @@
       </button>
     </div>
 
-    <p class="feedback-line">{{ feedback }}</p>
+    <div class="feedback-panel" :class="`feedback-${feedbackType}`">
+      <p class="feedback-line">{{ feedback }}</p>
+      <p v-if="showAnswerDetails" class="answer-line">
+        你的答案 Your answer: <strong>{{ selectedOption }}</strong>
+      </p>
+      <p v-if="showAnswerDetails" class="answer-line">
+        正确答案 Correct answer: <strong>{{ current.answer }}</strong>
+      </p>
+    </div>
     <p class="score-line">得分 Score: {{ score }}</p>
   </div>
 </template>
@@ -45,13 +54,17 @@ const total = list.length
 const index = ref(0)
 const score = ref(0)
 const feedback = ref('请选择最自然的回答 · Choose the most natural reply')
+const feedbackType = ref<'neutral' | 'correct' | 'wrong' | 'done'>('neutral')
 const locked = ref(false)
+const selectedOption = ref('')
 const displayOptions = ref<string[]>([])
 const elapsedSeconds = ref(0)
+const FEEDBACK_DELAY_MS = 1600
 let timerId: ReturnType<typeof setInterval> | null = null
 
 const current = computed(() => list[index.value]!)
 const timerText = computed(() => formatTimer(elapsedSeconds.value))
+const showAnswerDetails = computed(() => feedbackType.value === 'correct' || feedbackType.value === 'wrong')
 
 function formatTimer(seconds: number): string {
   const m = Math.floor(seconds / 60).toString().padStart(2, '0')
@@ -79,26 +92,39 @@ watch(current, (question) => {
 onMounted(startTimer)
 onUnmounted(stopTimer)
 
+function optionStateClass(option: string): string {
+  if (!locked.value || !showAnswerDetails.value) return ''
+  if (option === current.value.answer) return 'is-correct'
+  if (option === selectedOption.value) return 'is-wrong'
+  return ''
+}
+
 function pick(option: string): void {
   if (locked.value) return
   locked.value = true
+  selectedOption.value = option
 
   if (option === current.value.answer) {
     score.value += 10
-    feedback.value = '回答正确 · Correct answer'
+    feedbackType.value = 'correct'
+    feedback.value = '回答正确！ · Correct!'
   } else {
-    feedback.value = `回答错误，正确答案是 ${current.value.answer} · Incorrect, correct answer: ${current.value.answer}`
+    feedbackType.value = 'wrong'
+    feedback.value = '回答错误 · Incorrect'
   }
 
   setTimeout(() => {
     if (index.value < total - 1) {
       index.value += 1
       feedback.value = '请选择最自然的回答 · Choose the most natural reply'
+      feedbackType.value = 'neutral'
+      selectedOption.value = ''
       locked.value = false
       return
     }
 
     stopTimer()
+    feedbackType.value = 'done'
     feedback.value = `游戏结束，最终得分 ${score.value} · Game over, final score: ${score.value}`
     addScore({
       game: '对话选择 Dialogue Choice',
@@ -106,6 +132,6 @@ function pick(option: string): void {
       duration: elapsedSeconds.value,
     })
     locked.value = true
-  }, 700)
+  }, FEEDBACK_DELAY_MS)
 }
 </script>
