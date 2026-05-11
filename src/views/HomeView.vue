@@ -1,8 +1,8 @@
 ﻿<template>
   <section class="home-shell">
     <div class="hero card">
-      <p class="hero-kicker">汉语教程1-15课综合复习游戏</p>
-      <h2>Chinese Course Review Games (Lessons 1-15)</h2>
+      <p class="hero-kicker">汉语教程综合复习游戏</p>
+      <h2>Chinese Course Review Games</h2>
       <p class="hero-desc">
         通过有趣的游戏巩固汉语知识，提升汉字、拼音和对话能力。<br />
         Reinforce Chinese knowledge through fun games, improving character, pinyin and conversation skills.
@@ -21,8 +21,8 @@
         <h4>教材同步</h4>
         <p class="feature-en">Aligned with Textbook</p>
         <p>
-          完全基于《汉语教程》1-15课内容，针对性复习重点知识。<br />
-          Based on "Chinese Course" Lessons 1-15 with focused review goals.
+          完全基于《汉语教程》内容，针对性复习重点知识。<br />
+          Based on "Chinese Course" content with focused review goals.
         </p>
       </article>
 
