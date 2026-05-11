@@ -5,18 +5,22 @@
       <p class="game-progress">第 {{ index + 1 }} / {{ total }} 题 · Question {{ index + 1 }} / {{ total }}</p>
       <p class="game-timer">计时 Timer: {{ timerText }}</p>
     </div>
-    <p class="question question-large">{{ current.question }}</p>
+    <p class="question question-large question-bilingual">
+      <span class="question-hanzi">{{ current.question }}</span>
+      <span class="question-pinyin">{{ currentQuestionPinyin }}</span>
+    </p>
 
     <div class="options options-large">
       <button
         v-for="(opt, optIndex) in displayOptions"
         :key="`${index}-${optIndex}-${opt}`"
-        class="option-btn"
+        class="option-btn bilingual-option-btn"
         :class="optionStateClass(opt)"
         @click="pick(opt)"
         :disabled="locked"
       >
-        {{ opt }}
+        <span class="option-hanzi">{{ opt }}</span>
+        <span class="option-pinyin">{{ toTonePinyin(opt) }}</span>
       </button>
     </div>
 
@@ -37,6 +41,7 @@
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { grammarQuestions } from '../data/questions'
 import { addScore } from '../utils/scores'
+import { toTonePinyin } from '../utils/pinyin'
 
 function shuffleArray<T>(arr: T[]): T[] {
   const cloned = [...arr]
@@ -65,6 +70,7 @@ let timerId: ReturnType<typeof setInterval> | null = null
 const current = computed(() => list[index.value]!)
 const timerText = computed(() => formatTimer(elapsedSeconds.value))
 const showAnswerDetails = computed(() => feedbackType.value === 'correct' || feedbackType.value === 'wrong')
+const currentQuestionPinyin = computed(() => toTonePinyin(current.value.question))
 
 function formatTimer(seconds: number): string {
   const m = Math.floor(seconds / 60).toString().padStart(2, '0')
